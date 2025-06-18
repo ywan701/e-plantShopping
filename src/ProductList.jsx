@@ -227,7 +227,7 @@ function ProductList({ onHomeClick }) {
         padding: '15px',
         display: 'flex',
         justifyContent: 'space-between',
-        alignIems: 'center',
+        alignItems: 'center',
         fontSize: '20px',
     }
     const styleObjUl = {
@@ -323,10 +323,11 @@ function ProductList({ onHomeClick }) {
                             <div className="product-cost">{plant.cost}</div> {/* Display plant cost */}
                             <div className="product-description">{plant.description}</div> {/* Display plant description */}
                             <button
-                                className="product-button"
-                                onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                            className={`product-button ${addedToCart[plant.name] ? 'added-to-cart' : ''}`}
+                            onClick={() => handleAddToCart(plant)}
+                            disabled={!!addedToCart[plant.name]}
                             >
-                                Add to Cart
+                            Add to Cart
                             </button>
                             </div>
                         ))}
